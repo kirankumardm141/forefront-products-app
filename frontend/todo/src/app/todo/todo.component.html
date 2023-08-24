@@ -1,0 +1,39 @@
+<H1>Product</H1>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf="productForm.dirty && productForm.invalid">Enter valid values</div>
+  <div class="alert alert-warning" *ngIf="productForm.dirty && name.invalid">Enter atleast 5 characters in Name </div>
+  
+  <form (ngSubmit)="!productForm.invalid && saveProduct()" #productForm="ngForm">
+    <fieldset class="form-group">
+      <label>Name</label>
+      <input type="text" #name="ngModel" 
+            [(ngModel)]="product.name" class="form-control" 
+                name="name" required="required" minlength="5">
+    </fieldset>
+
+      <fieldset class="form-group">
+        <label>Price</label>
+        <input type="text" #price="ngModel" 
+              [(ngModel)]="product.price" class="form-control" 
+                  name="price" required="required" minlength="5">
+      </fieldset>
+
+        <fieldset class="form-group">
+          <label>Stock</label>
+          <input type="text" #stock="ngModel" 
+                [(ngModel)]="product.stock" class="form-control" 
+                    name="stock" required="required" minlength="5">
+        </fieldset>
+
+    <!-- <fieldset class="form-group">
+        <label>Target Date</label>
+        <input type="date" #targetDate="ngModel"
+        [ngModel]="todo.targetDate | date:'yyyy-MM-dd' "
+        (ngModelChange)="todo.targetDate = $event"
+        class="form-control" name="targetDate" required="required" >
+    </fieldset> -->
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>
